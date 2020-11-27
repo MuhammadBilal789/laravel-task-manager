@@ -2,7 +2,7 @@
 
 A Simple Laravel Task Manager Application
 
-![Task Manager Dashboard](https://github.com/MuhammadBilal789/laravel-task-manager/blob/master/public/screenshot/dashboard.png)
+![Task Manager Dashboard](https://github.com/MuhammadBilal789/laravel-task-manager/blob/master/public/screenshot/taskmanagerdashboard.png)
 
 ## How to use
 
