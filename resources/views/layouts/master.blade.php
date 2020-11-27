@@ -8,6 +8,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+    rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+    crossorigin="anonymous
+    "/>
     <link rel="stylesheet" href="/assets/css/tailwind.output.css" />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
@@ -81,7 +86,7 @@
 
           </ul>
           <div class="px-6 my-6">
-            <button onclick="location.href='{{ url('https://github.com/MuhammadBilal789/laravel-task-manager') }}'"
+            <button onclick="location.href='{{ url('https://github.com/MuhammadBilal789/laravel-task-manager target="_blank"' ) }}'"
               class="flex items-center justify-left w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
             >
             <svg

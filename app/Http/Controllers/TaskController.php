@@ -82,6 +82,7 @@ class TaskController extends Controller
             'name' => 'required',
             'category' => 'required',
             'description' => 'required',
+            'status' => 'required',
         ]);
 
         $task->update($request->all());
