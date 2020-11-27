@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/home', function () {
-    return view('welcome');
-});
-
-Route::post('users/{id}', function ($id) {
-    dd($id);
-});
+Route::get('/', 'DashboardController@index');
 Route::get("/tasks/search", 'TaskController@search');
 Route::get('/tasks/search', 'TaskController@search')->name('tasks.search');
 Route::resource('tasks', 'TaskController');

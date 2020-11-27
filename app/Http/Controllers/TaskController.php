@@ -115,10 +115,12 @@ class TaskController extends Controller
             ->paginate(5);
         $task->appends(['term' => $term]);
 
-        if (count($task) > 0) {
-            return view('tasks.search', compact('task', 'term'));
-        } else {
-            return view('welcome')->withMessage('No Details found. Try to search again !');
-        }
+        return view('tasks.search', compact('task', 'term'));
+
+        /*if (count($task) > 0) {
+    return view('tasks.search', compact('task', 'term'));
+    } else {
+    return view('tasks.search', compact('task', 'term'));
+    }*/
     }
 }
