@@ -229,7 +229,7 @@
                   <span class="flex items-center col-span-3">
                     Showing
                     @if(count($task)!=0)
-                      {{$task->first()->id}}-{{$task->last()->id}} of {{$task->total()}}
+                    {{$task->firstItem()}}-{{$task->lastItem()}} of {{$task->total()}}
                     @endif
                   </span>
                   <span class="col-span-2"></span>

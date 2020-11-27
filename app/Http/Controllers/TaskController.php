@@ -115,7 +115,6 @@ class TaskController extends Controller
             ->orWhere('status', 'LIKE', '%' . $term . '%')
             ->paginate(5);
         $task->appends(['term' => $term]);
-
         return view('tasks.search', compact('task', 'term'));
 
         /*if (count($task) > 0) {
