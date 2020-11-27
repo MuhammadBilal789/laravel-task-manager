@@ -11,7 +11,7 @@ A Simple Laravel Task Manager Application
 -   Run **composer install**
 -   Run **php artisan config:cache**
 -   Run **php artisan key:generate**
--   Run **php artisan migrte**
+-   Run **php artisan migrate**
 -   Run **php artisan serve**
 -   That's it: launch the main URL
 
