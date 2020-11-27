@@ -2,15 +2,16 @@
 
 A Simple Laravel Task Manager Application
 
-![Task Manager Dashboard](public\screenshot\dashboard.png)
+![Task Manager Dashboard](https://github.com/MuhammadBilal789/laravel-task-manager/blob/master/public/screenshot/dashboard.png)
 
 ## How to use
 
 -   Clone the repository with **git clone**
 -   Copy **.env.example** file to **.env** and edit database credentials there
 -   Run **composer install**
--   Run **php artisan key:generate**
 -   Run **php artisan config:cache**
+-   Run **php artisan key:generate**
+-   Run **php artisan migrte**
 -   Run **php artisan serve**
 -   That's it: launch the main URL
 
@@ -18,6 +19,6 @@ A Simple Laravel Task Manager Application
 
 ## License
 
-Feel free to use & reuse any way you want.
+Feel free to use any way you want.
 
 ---
