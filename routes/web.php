@@ -12,8 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+Route::redirect('/', '/login');
 
-Route::get('/', 'DashboardController@index');
-Route::get("/tasks/search", 'TaskController@search');
-Route::get('/tasks/search', 'TaskController@search')->name('tasks.search');
-Route::resource('tasks', 'TaskController');
+Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/tasks/search', 'TaskController@search')->name('tasks.search');
+    Route::resource('tasks', 'TaskController');
+
+});

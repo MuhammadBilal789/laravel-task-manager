@@ -4,9 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class task extends Model
+class Task extends Model
 {
     protected $fillable = [
-        'name', 'category', 'description', 'status',
+        'name', 'user_id', 'category', 'description', 'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

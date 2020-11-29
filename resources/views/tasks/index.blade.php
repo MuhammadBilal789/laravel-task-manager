@@ -3,7 +3,6 @@
 @section('title')
     Task Manager
 @endsection()
-<!-- Pagination -->
 
 @push('scripts')
     <script>

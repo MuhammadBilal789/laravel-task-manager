@@ -3,7 +3,6 @@
 @section('title')
     Task Manager
 @endsection()
-<!-- Pagination -->
 
 @push('scripts')
     <script>
@@ -235,10 +234,11 @@
                   <span class="col-span-2"></span>
                   <!-- Pagination -->
                   <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-
+                  @if(count($task)>5))
                 <button onclick="location.href='{{ route('tasks.index') }}'" class="flex items-center justify-between w-half px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                   Show all
                 </button>
+                @endif
 
 
                   </span>

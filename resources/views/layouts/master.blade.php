@@ -21,6 +21,7 @@
     <script src="/assets/js/init-alpine.js"></script>
   </head>
   <body>
+  @auth
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}"
@@ -34,13 +35,13 @@
             class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
             href="https://github.com/MuhammadBilal789" target="_blank"
           >
-          M Bilal Paracha
+          {{auth()->user()->name}}
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="/"
+                href="/dashboard"
               >
                 <svg
                   class="w-5 h-5"
@@ -385,6 +386,7 @@
         </div>
       </aside>
       <div class="flex flex-col flex-1 w-full">
+
         <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
           <div
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
@@ -612,8 +614,12 @@
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="#"
-                      >
+                        href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                         <svg
                           class="w-4 h-4 mr-3"
                           aria-hidden="true"
@@ -637,6 +643,8 @@
             </ul>
           </div>
         </header>
+
+  @endauth
         <main class="h-full pb-16 overflow-y-auto">
           @yield('content')
         </main>

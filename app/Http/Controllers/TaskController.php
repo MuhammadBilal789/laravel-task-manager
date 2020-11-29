@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -14,7 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $task = Task::paginate(5);
+        $task = Auth::user()->tasks()->paginate(5);
         return view('tasks.index', compact('task'));
     }
 
@@ -43,7 +44,13 @@ class TaskController extends Controller
             'status' => 'required',
         ]);
 
-        Task::create($request->all());
+        Task::create([
+            'name' => $request->name,
+            'category' => $request->category,
+            'description' => $request->description,
+            'status' => $request->status,
+            'user_id' => Auth::user()->id]);
+
         return redirect()->route('tasks.index')->with('success', 'Task created successfully.');
     }
 
@@ -66,6 +73,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
+        Auth::user()->tasks()->findOrFail($task->id);
         return view('tasks.edit', compact('task'));
     }
 
@@ -99,6 +107,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        Auth::user()->tasks()->findOrFail($task->id);
         $task->delete();
 
         return redirect()->route('tasks.index')
@@ -109,18 +118,15 @@ class TaskController extends Controller
     {
         $term = $request->term;
 
-        $task = Task::where('name', 'LIKE', '%' . $term . '%')
-            ->orWhere('category', 'LIKE', '%' . $term . '%')
-            ->orWhere('description', 'LIKE', '%' . $term . '%')
-            ->orWhere('status', 'LIKE', '%' . $term . '%')
-            ->paginate(5);
+        $task = Task::where('user_id', auth()->user()->id)
+            ->where(function ($query) use ($term) {
+                $query->where('name', 'LIKE', '%' . $term . '%')
+                    ->orWhere('category', 'LIKE', '%' . $term . '%')
+                    ->orWhere('description', 'LIKE', '%' . $term . '%')
+                    ->orWhere('status', 'LIKE', '%' . $term . '%');
+            })->paginate(5);
+
         $task->appends(['term' => $term]);
         return view('tasks.search', compact('task', 'term'));
-
-        /*if (count($task) > 0) {
-    return view('tasks.search', compact('task', 'term'));
-    } else {
-    return view('tasks.search', compact('task', 'term'));
-    }*/
     }
 }
