@@ -8,13 +8,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
+
+        $total = Auth::user()->tasks;
         $task = Auth::user()->tasks()->paginate(5);
 
-        $total = count($task->all());
-        $pending = count($task->where('status', 'pending'));
-
-        $inprogress = count($task->where('status', 'inprogress'));
-        $completed = count($task->where('status', 'completed'));
+        $pending = count($total->where('status', 'pending'));
+        $inprogress = count($total->where('status', 'inprogress'));
+        $completed = count($total->where('status', 'completed'));
 
         return view('dashboard', compact('task', 'total', 'pending', 'inprogress', 'completed'));
     }

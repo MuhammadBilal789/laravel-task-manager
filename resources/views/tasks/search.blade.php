@@ -85,7 +85,7 @@
                           </div>
                         </td>
                         <td class="px-4 py-3 text-sm">
-                        {{$tasks->description}}
+                        {{Str::limit($tasks->description, 25)}}
                         </td>
                         <td class="px-4 py-3 text-xs">
                           @if($tasks->status == 'completed')
